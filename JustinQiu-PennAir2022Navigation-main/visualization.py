@@ -19,9 +19,12 @@ for flyPoint in dataFlyCoordinates:
 
 # Plot points with corrected distance
 for coordinate in coordinates:
-    plt.plot(distance.distance(coordinate, (coordinate[0], minLong)).feet, 
-    distance.distance(coordinate, (minLat, coordinate[1])).feet, 'ro', 
-    label = coordinates.index(coordinate)) 
+    newX = distance.distance(coordinate, (coordinate[0], minLong)).feet
+    newY = distance.distance(coordinate, (minLat, coordinate[1])).feet
+    plt.plot(newX, newY, 'rv')
+    plt.annotate(coordinates.index(coordinate), xy = (newX-20, newY+100))
 
-plt.legend()
+plt.title('Plot for Adjusted Waypoints')
+plt.ylabel('Adjusted Y Coordinate (feet)', fontsize = 15) 
+plt.xlabel('Adjusted X Coordinate (feet)', fontsize = 15) 
 plt.show()
